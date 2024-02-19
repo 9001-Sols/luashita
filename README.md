@@ -1,1 +1,3 @@
 # luashita
+
+FFXI Luashita Profiles

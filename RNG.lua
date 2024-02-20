@@ -184,7 +184,7 @@ profile.HandleDefault = function()
 
     -- Danger Low HP
     if (player.HPP < 25 and player.TP < 1000) then
-        gFunc.equip("ear2", "Tracker\'s Earring")
+        gFunc.Equip("ear2", "Tracker\'s Earring")
     end
 
     -- Move Speed
@@ -212,7 +212,7 @@ profile.HandleItem = function()
 end
 
 profile.HandlePrecast = function()
-    gFunc.equip("ear2", "Loquac. Earring");
+    gFunc.Equip("ear2", "Loquac. Earring");
 end
 
 profile.HandleMidcast = function()

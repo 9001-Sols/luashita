@@ -206,6 +206,9 @@ profile.HandleAbility = function()
     if (action.Name == "Shadowbind") then
         gFunc.Equip("hands", "Htr. Bracers +1");
     end
+
+    -- This prevents us from accidentally shooting a special bullet with Shadowbind or Eagle Eye Shot
+    gFunc.EquipSet("StandardAmmo");
 end
 
 profile.HandleItem = function()
@@ -243,6 +246,8 @@ profile.HandleMidshot = function()
         gFunc.EquipSet(profile.Sets.TP[Mode]);
     end
 
+    -- TODO: We don't need to wear Rajas Ring for every shot, if we have 6XX TP and not a flat 600, we can wear Merman's Ring
+    -- Code out the charts to see when we can wear something else
     if (us == 1) then
         gFunc.EquipSet("UnlimitedShot");
     else

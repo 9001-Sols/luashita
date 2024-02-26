@@ -142,7 +142,21 @@ local sets = {
     ['StandardAmmo'] = {
         Ammo = "Silver Bullet",
     },
-
+    ['EagleEyeShot'] = {          -- On Horizon, this ability can't miss, so we can stack a ton of ranged attack and we don't care about - R.ACC. I believe r.atk is more important than str
+        Ammo = "Silver Bullet",
+        Head = "Htr. beret +1",   -- TODO: Replace with Skadi Visor/Zha'Go's barbut when available
+        Neck = "Faith Torque",
+        Ear1 = "Bushinomimi",     -- TODO: Replace with Ladybug Earring+1 when available
+        Ear2 = "Triumph earring", -- TODO: Replace with Ladybug Earring+1 when available
+        Body = "Archer\'s Jupon",
+        Hands = "Blood Fng. Gnt.",
+        Ring1 = "Rajas Ring",      -- TODO: Replace with Jalzhran's Ring, Cerberus Ring, or AV Ring when available
+        Ring2 = "Crossbowman Ring",
+        Back = "Amemet Mantle +1", -- TODO: Replace with Gunner's Mantle
+        Waist = "Scout\'s Belt",
+        Legs = "Scout\'s Braccae", -- TODO: Replace with Skadi Legs when available
+        Feet = "Sct. Socks +1",
+    },
 };
 profile.Sets = sets;
 
@@ -195,6 +209,7 @@ end
 
 profile.HandleAbility = function()
     local action = gData.GetAction();
+
     if (action.Name == "Scavenge") then
         gFunc.Equip("feet", "Hunter\'s Socks");
     end
@@ -205,6 +220,10 @@ profile.HandleAbility = function()
 
     if (action.Name == "Shadowbind") then
         gFunc.Equip("hands", "Htr. Bracers +1");
+    end
+
+    if (action.Name == "Eagle Eye Shot") then
+        gFunc.EquipSet("EagleEyeShot")
     end
 
     -- This prevents us from accidentally shooting a special bullet with Shadowbind or Eagle Eye Shot

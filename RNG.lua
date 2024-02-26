@@ -137,7 +137,7 @@ local sets = {
         Feet = "Sct. Socks +1",
     },
     ['UnlimitedShot'] = {
-        Ammo = "Silver Bullet", -- Put Unlimited Shot ammo here
+        Ammo = "Carapace Bullet", -- Put Unlimited Shot ammo here
     },
     ['StandardAmmo'] = {
         Ammo = "Silver Bullet",
@@ -224,6 +224,8 @@ profile.HandlePreshot = function()
 
     if (us == 1) then
         gFunc.EquipSet("UnlimitedShot");
+    else
+        gFunc.EquipSet("StandardAmmo");
     end
 
     gFunc.Equip("body", "Scout\'s Jerkin");
@@ -251,6 +253,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
+    local us = gData.GetBuffCount("Unlimited Shot");
     local Mode = varhelper.GetCycle("Mode");
     local Action = gData.GetAction();
 
@@ -268,6 +271,12 @@ profile.HandleWeaponskill = function()
         else
             gFunc.EquipSet("Slug");
         end
+    end
+
+    if (us == 1) then
+        gFunc.EquipSet("UnlimitedShot");
+    else
+        gFunc.EquipSet("StandardAmmo");
     end
 end
 

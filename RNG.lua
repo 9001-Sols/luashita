@@ -196,15 +196,25 @@ profile.HandleDefault = function()
     -- end
     gFunc.EquipSet(profile.Sets.Idle);
 
-    -- Danger Low HP
+    -- Danger Low HP (This might not be okay for Horizon so disable it to be safe)
     if (player.HPP < 25 and player.TP < 1000) then
         gFunc.Equip("ear2", "Tracker\'s Earring")
     end
 
-    -- Move Speed
+    -- Move Speed (This requires player input, so it should be okay to use on Horizon)
     if (player.IsMoving == true) then
         gFunc.Equip("legs", "Blood Cuisses");
     end
+
+    -- Opo-opo necklace (Disable this for Horizon as it is against the rules)
+    local asleep = gData.GetBuffCount("Sleep");
+    if (asleep > 0) then
+        gFunc.Equip("neck", "Opo-opo Necklace");
+    end
+
+    -- TODO: Aketon in town
+
+    -- TODO: Crafting gear before craft (Detect synth support?)
 end
 
 profile.HandleAbility = function()

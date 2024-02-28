@@ -215,6 +215,8 @@ profile.HandleDefault = function()
     -- TODO: Aketon in town
 
     -- TODO: Crafting gear before craft (Detect synth support?)
+
+    -- TODO: Prevent unequipping of items with enchantments (warp cudgel, treat staff, deadeye earring, etc)
 end
 
 profile.HandleAbility = function()

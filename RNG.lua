@@ -238,6 +238,10 @@ profile.HandleAbility = function()
         gFunc.EquipSet("EagleEyeShot")
     end
 
+    if (action.Name == "Camouflage") then
+        gFunc.Equip("body", "Hunter\'s Jerkin");
+    end
+
     -- This prevents us from accidentally shooting a special bullet with Shadowbind or Eagle Eye Shot
     gFunc.EquipSet("StandardAmmo");
 end

@@ -185,6 +185,11 @@ profile.HandleCommand = function(args)
     end
 end
 
+local isDaytime = function()
+    local environment = gData.GetEnvironment();
+    return (environment.Time > 6 and environment.Time < 18);
+end
+
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
 
@@ -210,6 +215,11 @@ profile.HandleDefault = function()
     local asleep = gData.GetBuffCount("Sleep");
     if (asleep > 0) then
         gFunc.Equip("neck", "Opo-opo Necklace");
+    end
+
+    -- If health isn't max throw on regen items
+    if (player.HPP < 99 and isDaytime()) then
+        gFunc.Equip("hands", "Garden Bangles");
     end
 
     -- TODO: Aketon in town

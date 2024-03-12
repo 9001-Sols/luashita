@@ -157,6 +157,12 @@ local sets = {
         Legs = "Scout\'s Braccae", -- TODO: Replace with Skadi Legs when available
         Feet = "Sct. Socks +1",
     },
+    ['Gathering'] = {
+        Body = "Field Tunica",
+        Hands = "Worker Gloves",
+        Legs = "Worker Hose",
+        Feet = "Worker Boots"
+    }
 };
 profile.Sets = sets;
 
@@ -168,11 +174,11 @@ profile.OnLoad = function()
     varhelper.Initialize();
 
     varhelper.CreateCycle("Mode", { [1] = "Standard", [2] = "Accuracy" });
-    -- varhelper.CreateCycle("Mode", {[1] = "Standard", [2] = "Enmity'});
+    varhelper.CreateCycle("Aux", { [1] = "None", [2] = "Gathering" });
 
 
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind F9 /lac fwd advance Mode");
-    -- AshitaCore:GetChatManager():QueueCommand(-1, "/bind F10 /lac fwd advance Mode");
+    AshitaCore:GetChatManager():QueueCommand(-1, "/bind F10 /lac fwd advance Aux");
 end
 
 profile.OnUnload = function()
@@ -191,6 +197,7 @@ local isDaytime = function()
 end
 
 profile.HandleDefault = function()
+    local aux = varhelper.GetCycle("Aux");
     local player = gData.GetPlayer();
 
     -- if (player.Status == "Engaged") then
@@ -199,7 +206,12 @@ profile.HandleDefault = function()
     -- else
     --     gFunc.EquipSet(profile.Sets.Idle);
     -- end
-    gFunc.EquipSet(profile.Sets.Idle);
+    if (aux == "Gathering") then
+        gFunc.EquipSet(profile.Sets.Gathering);
+    else
+        gFunc.EquipSet(profile.Sets.Idle);
+    end
+
 
     -- Danger Low HP (This might not be okay for Horizon so disable it to be safe)
     if (player.HPP < 25 and player.TP < 1000) then
@@ -289,6 +301,12 @@ profile.HandleMidshot = function()
     else
         local Mode = varhelper.GetCycle("Mode");
         gFunc.EquipSet(profile.Sets.TP[Mode]);
+    end
+
+    -- Opo-opo necklace (Disable this for Horizon as it is against the rules)
+    local asleep = gData.GetBuffCount("Sleep");
+    if (asleep > 0) then
+        gFunc.Equip("neck", "Opo-opo Necklace");
     end
 
     -- TODO: We don't need to wear Rajas Ring for every shot, if we have 6XX TP and not a flat 600, we can wear Merman's Ring

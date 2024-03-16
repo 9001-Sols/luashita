@@ -17,7 +17,7 @@ local sets = {
     },
     -- idle = {
     --     main = ElementalStaffTable["Earth"],
-    --     ranged = "Hamelin Flute",
+    --     range = "Hamelin Flute",
     --     head = "Darksteel Cap +1",
     --     neck = "Evasion Torque",
     --     ear1 = "Merman's earring",
@@ -150,15 +150,15 @@ profile.HandleMidcast = function()
     gFunc.Equip('main', ElementalStaffTable[action.Element]);
 
     if (string.match(action.Name, 'Lullaby')) then
-        gFunc.equip('ranged', 'Mary\'s Horn');
+        gFunc.equip('range', 'Mary\'s Horn');
     elseif (string.match(action.Name, 'Minuet')) then
-        gFunc.equip('ranged', 'Cornette +1');
+        gFunc.equip('range', 'Cornette +1');
     elseif (string.match(action.Name, 'March')) then
-        gFunc.equip('ranged', 'Kingdom Horn');
+        gFunc.equip('range', 'Kingdom Horn');
     elseif (string.match(action.Name, 'Madrigal')) then
-        gFunc.equip('ranged', 'Traversiere +2');
+        gFunc.equip('range', 'Traversiere +2');
     elseif (string.match(action.Name, 'Elegy')) then
-        gFunc.equip('ranged', 'Horn +1');
+        gFunc.equip('range', 'Horn +1');
     end
 
     if string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga') then

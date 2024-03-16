@@ -295,6 +295,7 @@ end
 profile.HandleMidshot = function()
     local barr = gData.GetBuffCount("Barrage");
     local us = gData.GetBuffCount("Unlimited Shot");
+    local player = gData.GetPlayer();
 
     if (barr == 1) then
         gFunc.EquipSet("Barrage");
@@ -307,6 +308,11 @@ profile.HandleMidshot = function()
     local asleep = gData.GetBuffCount("Sleep");
     if (asleep > 0) then
         gFunc.Equip("neck", "Opo-opo Necklace");
+    end
+
+    -- Danger Low HP (This might not be okay for Horizon so disable it to be safe)
+    if (player.HPP < 25 and player.TP < 1000) then
+        gFunc.Equip("ear2", "Tracker\'s Earring")
     end
 
     -- TODO: We don't need to wear Rajas Ring for every shot, if we have 6XX TP and not a flat 600, we can wear Merman's Ring

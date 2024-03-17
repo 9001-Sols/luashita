@@ -150,15 +150,17 @@ profile.HandleMidcast = function()
     gFunc.Equip('main', ElementalStaffTable[action.Element]);
 
     if (string.match(action.Name, 'Lullaby')) then
-        gFunc.equip('range', 'Mary\'s Horn');
+        gFunc.Equip('range', 'Mary\'s Horn');
     elseif (string.match(action.Name, 'Minuet')) then
-        gFunc.equip('range', 'Cornette +1');
+        gFunc.Equip('range', 'Cornette +1');
     elseif (string.match(action.Name, 'March')) then
-        gFunc.equip('range', 'Kingdom Horn');
+        gFunc.Equip('range', 'Kingdom Horn');
     elseif (string.match(action.Name, 'Madrigal')) then
-        gFunc.equip('range', 'Traversiere +2');
+        gFunc.Equip('range', 'Traversiere +2');
     elseif (string.match(action.Name, 'Elegy')) then
-        gFunc.equip('range', 'Horn +1');
+        gFunc.Equip('range', 'Horn +1');
+    elseif (string.match(action.Name, 'Minne')) then
+        gFunc.Equip('range', 'Maple Harp +1');
     end
 
     if string.match(action.Name, 'Cure') or string.match(action.Name, 'Curaga') then

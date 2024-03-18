@@ -162,6 +162,11 @@ local sets = {
         Hands = "Worker Gloves",
         Legs = "Worker Hose",
         Feet = "Worker Boots"
+    },
+    ['Crafting'] = {
+        Body = "Carpenter\'s Apron",
+        Hands = "Carpenter\'s Gloves",
+        Legs = "Blood Cuisses"
     }
 };
 profile.Sets = sets;
@@ -174,8 +179,7 @@ profile.OnLoad = function()
     varhelper.Initialize();
 
     varhelper.CreateCycle("Mode", { [1] = "Standard", [2] = "Accuracy" });
-    varhelper.CreateCycle("Aux", { [1] = "None", [2] = "Gathering" });
-
+    varhelper.CreateCycle("Aux", { [1] = "None", [2] = "Gathering", [3] = "Crafting" });
 
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind F9 /lac fwd advance Mode");
     AshitaCore:GetChatManager():QueueCommand(-1, "/bind F10 /lac fwd advance Aux");
@@ -208,6 +212,8 @@ profile.HandleDefault = function()
     -- end
     if (aux == "Gathering") then
         gFunc.EquipSet(profile.Sets.Gathering);
+    elseif (aux == "Crafting") then
+        gFunc.EquipSet(profile.Sets.Crafting);
     else
         gFunc.EquipSet(profile.Sets.Idle);
     end
@@ -307,6 +313,7 @@ profile.HandleMidshot = function()
     -- Opo-opo necklace (Disable this for Horizon as it is against the rules)
     local asleep = gData.GetBuffCount("Sleep");
     if (asleep > 0) then
+        gFunc.EquipSet(profile.Sets.Idle);
         gFunc.Equip("neck", "Opo-opo Necklace");
     end
 

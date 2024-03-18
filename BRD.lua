@@ -13,7 +13,7 @@ local ElementalStaffTable = {
 
 local sets = {
     idle = {
-        ranged = "Kingdom Horn"
+        range = "Kingdom Horn"
     },
     -- idle = {
     --     main = ElementalStaffTable["Earth"],

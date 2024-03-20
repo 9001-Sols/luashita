@@ -236,7 +236,7 @@ profile.HandleDefault = function()
     end
 
     -- If health isn't max throw on regen items
-    if (player.HPP < 99 and isDaytime() and aux ~= "Gathering") then
+    if (player.HPP < 99 and isDaytime() and aux ~= "Gathering" and aux ~= "Crafting") then
         gFunc.Equip("hands", "Garden Bangles");
     end
 
